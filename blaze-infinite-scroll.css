@@ -90,3 +90,6 @@ textarea {
 	border: 0;
 	background: white url(spinner.gif) no-repeat right top;
 }
+h6 {
+	margin:0;
+}
