@@ -1,0 +1,92 @@
+/* CSS declarations go here */
+html {
+	background-color: white;
+}
+body {
+	height: 100%;
+	width: 100%;
+	font-size: 18pt;
+	font-family: Arial, sans-serif;
+	position: absolute;
+	margin-top: 15%;
+}
+
+.fixedTop {
+	height: 15%;
+	background-color: white;
+	width: 95%;
+	border-bottom: 2px solid #aaa;
+	z-index: 10;
+	position: fixed;
+	padding:1em;
+	top:0;
+}
+.fixedTop h1 {
+	margin:0;
+}
+.fixedTop a {
+	text-decoration: none;
+	color: #888;
+}
+/* the DIV */
+.article {
+	background-color: rgb(80,160,150);	
+	height: 70%;
+	border:8px ridge teal;
+}
+.article, span.loading {
+	position: relative;
+	width: 65%;
+	margin: 5px auto;
+	border-radius: 10px;
+}
+span.loading {
+	height: 40px;
+}
+span.message {
+	color: red;
+}
+.article span.delete {
+	color: white;
+	position: absolute;
+	top: 5px;
+	right: 10px;
+}
+.article span:hover {
+	color: red;
+}
+/* H1 */
+.title {
+	width: 70%;
+	height: 50%;
+	color: white;
+	overflow: auto;
+	margin: auto;
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+	font-size: 25pt;
+	text-align: center;
+	/*border: 1px dotted yellow;*/
+}
+.title:hover {
+	text-decoration: underline;
+}
+
+textarea {
+	text-align: center;
+	background-color: white;
+	overflow: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+#showMoreResults {
+	height: 40px;
+/*
+	width: 65%;
+	margin: auto;
+*/	
+	border: 0;
+	background: white url(spinner.gif) no-repeat right top;
+}

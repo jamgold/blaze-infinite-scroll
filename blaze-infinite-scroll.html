@@ -1,0 +1,50 @@
+<head>
+  <title>blaze-infinite-scroll</title>
+  <!--
+  http://shokai.github.io/jQuery.editable/ 
+  http://beautifulpixels.com/goodies/create-custom-webkit-scrollbar/
+  -->
+  <script src="jquery.editable.min.js"></script>
+</head>
+
+<body>
+  {{> scrolling}}
+</body>
+
+<template name="scrolling">
+	<div class="fixedTop">
+		<h1><a href="http://www.meteorpedia.com/read/Infinite_Scrolling">Infinite Scrolling</a> Demo!</h1>
+		Currently the <a href="#" title="Generate random article" class="article-new">Article list</a> has {{totalArticles}} entries,
+		but the site only has loaded <a href="#" title="Click me to reset the Article count" class="article-reset">{{loadedArticles}}</a>.	You can click on the Article headline to edit in place. Load next {{ITEMS_INCREMENT}} Article(s) timeout in <input class="timeout" size="4" value="{{timeout}}">ms.
+		(Meteor {{release}})
+		 <span class="message">{{message}}</span>
+	</div>
+	{{> articles}}
+</template>
+
+<template name="articles">
+	{{#each article}}
+		{{>art}}
+	{{/each}}
+
+	{{>showMoreResults}}
+</template>
+
+<template name="art">
+	<div class="article">
+	<span class="delete" title="click me to delete this article" id="{{_id}}">X</span>
+	<h1 id="{{_id}}" title="click me to edit" class="title">{{title}}</h1>
+	</div>
+</template>
+
+<template name="showMoreResults">
+	{{#if moreResults}}
+	    <div id="showMoreResults" class="article">
+	        <span class="loading">Loading... </span>
+	    </div>
+    {{else}}
+	    <div style="margin-left: 25px;">
+	        <span class="loading">The End</span>
+	    </div>    	
+	{{/if}}
+</template>
