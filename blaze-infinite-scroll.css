@@ -93,3 +93,9 @@ textarea {
 h6 {
 	margin:0;
 }
+.article h6 {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	color: white;
+}

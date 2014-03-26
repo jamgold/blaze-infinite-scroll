@@ -89,7 +89,7 @@ if (Meteor.isClient) {
     },
     'click a.article-new': function(e,t) {
       e.preventDefault();
-      Articles.insert({title: 'Something random '+new Date()});
+      Articles.insert({title: 'Something random '+new Date(), created:new Date()});
       Meteor.call('totalArticles',function(error, result){
         Session.set('totalArticles', result);
       });
@@ -152,7 +152,7 @@ if (Meteor.isClient) {
   });
 
   Template.articles.article = function() {
-    return Articles.find({},{sort: {_id: 1}});
+    return Articles.find({},{sort: {created: 1}});
   };
 
   Deps.autorun(function() {
@@ -170,7 +170,7 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.publish('articles', function(limit){
     if(limit == undefined) limit = 1;
-    return Articles.find({},{limit: limit, sort: {_id: 1}});
+    return Articles.find({},{limit: limit, sort: {created: 1}});
   });
 
   Meteor.methods({
@@ -181,5 +181,6 @@ if (Meteor.isServer) {
 
   Meteor.startup(function () {
     // code to run on server at startup
+    Articles.update({created:{$exists:0}},{$set:{created: new Date()}}, {multi:1})
   });
 }
